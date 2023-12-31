@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bqminh.expofire"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,9 +24,9 @@
         "backgroundColor": "#ffffff"
       },
       "config": {
-        "package": "com.dacarnage.foodly",
+        "package": "com.bqminh.foodly",
         "googleMaps": {
-          "apiKey": ""
+          "apiKey": "AIzaSyAV_n9DpoT4JJlWfx2P_4wPFQWd6TS-vfs"
         }
       },
       "permissions": [
@@ -33,8 +34,7 @@
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.FOREGROUND_SERVICE"
       ],
-      "package": "com.dacarnage.expofire"
-      
+      "package": "com.bqminh.expofire"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -46,6 +46,12 @@
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
       ]
-    ]
+    ],
+    "owner": "buiminh30",
+    "extra": {
+      "eas": {
+        "projectId": "fcf23c9d-25a0-4974-b9a0-0d31c6ab41a6"
+      }
+    }
   }
 }
