@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { COLORS, SIZES } from "../constants/theme";
 import { SafeAreaView } from "react-native-safe-area-context";
 import pages from './page.style'
@@ -9,10 +9,15 @@ import { UserReversedGeoCode } from "../context/UserReversedGeoCode";
 import { UserLocationContext } from "../context/UserLocationContext";
 import HomeHeader from "../components/HomeHeader";
 import CategoryList from "../components/CategoryList";
+import ChoicesList from "../components/ChoicesList";
+import Heading from "../components/Heading";
 
 const Home = () => {
-  const {address, setAddress } = useContext(UserReversedGeoCode)
-  const {location, setLocation } = useContext(UserLocationContext)
+
+  const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedSection, setSelectedSection] = useState(null)
+  const [selectedValue, setSelectedValue] = useState(null)
+  const [selectedChoice, setSelectedChoice] = useState(null)
 
   return (
     <SafeAreaView>
@@ -23,7 +28,16 @@ const Home = () => {
           <ScrollView style={{borderBottomEndRadius: 30,
           borderBottomStartRadius: 30}}
           showVerticalIndicator={false}>
-            <CategoryList/>
+            <CategoryList 
+            setSelectedCategory ={setSelectedCategory}
+            setSelectedSection ={setSelectedSection}
+            setSelectedValue={setSelectedValue}
+            />
+            <ChoicesList setSelectedChoice={setSelectedChoice} setSelectedSection ={setSelectedSection}/>
+            <View>
+              <Heading heading={'Nearby Restaurants'} />
+            </View>
+          
           </ScrollView>
         </View>
       </View>
