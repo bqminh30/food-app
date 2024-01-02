@@ -11,6 +11,9 @@ import HomeHeader from "../components/HomeHeader";
 import CategoryList from "../components/CategoryList";
 import ChoicesList from "../components/ChoicesList";
 import Heading from "../components/Heading";
+import NearByRestaurants from "../components/NearByRestaurants";
+import Divider from "../components/Divider";
+import NewFoodList from "../components/NewFoodList";
 
 const Home = () => {
 
@@ -35,7 +38,15 @@ const Home = () => {
             />
             <ChoicesList setSelectedChoice={setSelectedChoice} setSelectedSection ={setSelectedSection}/>
             <View>
-              <Heading heading={'Nearby Restaurants'} />
+              <Heading heading={'Nearby Restaurants'} onPress={()=>{}}/>
+
+              <NearByRestaurants />
+
+              <Divider/>
+
+              <Heading heading={'Try Something New'} onPress={()=>{}}/>
+
+              <NewFoodList/>
             </View>
           
           </ScrollView>

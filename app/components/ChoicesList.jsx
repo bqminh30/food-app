@@ -12,7 +12,7 @@ import { COLORS } from "../constants/theme";
 const ChoicesList = ({setSelectedChoice, setSelectedSection}) => {
   const [selected, setSelected] = useState(null);
 
-  const handlePress = () => {
+  const handlePress = (item) => {
     if (selected === item.value) {
       setSelected(null);
       setSelectedChoice(null)
