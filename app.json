@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "foodly_react_native",
+    "slug": "foodly_react_native",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bqminh.expofire"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "package": "com.bqminh.foodly",
+        "googleMaps": {
+          "apiKey": "AIzaSyAV_n9DpoT4JJlWfx2P_4wPFQWd6TS-vfs"
+        }
+      },
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ],
+      "package": "com.bqminh.expofire"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ],
+    "owner": "buiminh30",
+    "extra": {
+      "eas": {
+        "projectId": "fcf23c9d-25a0-4974-b9a0-0d31c6ab41a6"
+      }
+    }
+  }
+}
