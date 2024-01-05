@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Search from "../screens/Search";
+import LoginPage from '../screens/LoginPage'
 import { COLORS } from "../constants/theme";
 import Profile from "../screens/Profile";
 import Cart from "../screens/Cart";
@@ -22,8 +23,10 @@ const tabBarStyle = {
 const BottomTab = () => {
   // const {count, isCartLoading, error, refetch} =fetchCartCount();
   
-  // const { cartCount, setCartCount } = useContext(CartCountContext);
-  // const {login, setLogin} = useContext(LoginContext)
+  const { cartCount, setCartCount } = useContext(CartCountContext);
+  const {login, setLogin} = useContext(LoginContext)
+
+  // console.log('car', cartCount)
 
   // if(isCartLoading){
   //   setCartCount(count)
@@ -101,7 +104,7 @@ const BottomTab = () => {
                         alignItems: 'center'
                     }}
                 >
-                    <Text style={{ color: 'white', fontSize: 10 }}>{0}</Text>
+                    <Text style={{ color: 'white', fontSize: 10 }}>{cartCount}</Text>
                 </View>
             
         </View>
@@ -111,7 +114,7 @@ const BottomTab = () => {
 
       <Tab.Screen
         name="Profile"
-        component={Profile }
+        component={login ? Profile : LoginPage }
         options={{
           tabBarStyle: tabBarStyle,
           tabBarShowLabel: false,

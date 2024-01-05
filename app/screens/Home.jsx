@@ -15,6 +15,7 @@ import NearByRestaurants from "../components/NearByRestaurants";
 import Divider from "../components/Divider";
 import NewFoodList from "../components/NewFoodList";
 import FastestNearYou from "../components/FastestNearYou";
+import HomeCategories from "../components/HomeCategories";
 
 const Home = () => {
 
@@ -27,35 +28,53 @@ const Home = () => {
     <SafeAreaView>
       <View style={pages.viewOne}>
         <View style={pages.viewTwo}>
-          <HomeHeader/>
+          <HomeHeader />
 
-          <ScrollView style={{borderBottomEndRadius: 30,
-          borderBottomStartRadius: 30}}
-          showVerticalIndicator={false}>
-            <CategoryList 
-            setSelectedCategory ={setSelectedCategory}
-            setSelectedSection ={setSelectedSection}
-            setSelectedValue={setSelectedValue}
+          <ScrollView style={{
+            borderBottomEndRadius: 30,
+            borderBottomStartRadius: 30
+          }}
+            showVerticalIndicator={false}>
+            <CategoryList
+              setSelectedCategory={setSelectedCategory}
+              setSelectedSection={setSelectedSection}
+              setSelectedValue={setSelectedValue}
             />
-            <ChoicesList setSelectedChoice={setSelectedChoice} setSelectedSection ={setSelectedSection}/>
-            <View>
-              <Heading heading={'Nearby Restaurants'} onPress={()=>{}}/>
+            <ChoicesList setSelectedChoice={setSelectedChoice} setSelectedSection={setSelectedSection} />
+            {
+              selectedCategory !== null && selectedSection !== null
+                ? (
+                  <View>
+                    <Heading heading={`Browse ${selectedValue}`} onPress={() => { }} />
+                    <HomeCategories />
 
-              <NearByRestaurants />
+                  </View>
+                )
+                : (
+                  <View>
 
-              <Divider/>
+                    <Heading heading={'Nearby Restaurants'} onPress={() => { }} />
+                    <NearByRestaurants />
 
-              <Heading heading={'Try Something New'} onPress={()=>{}}/>
+                    <Divider />
 
-              <NewFoodList/>
+                    <Heading heading={'Try Something New'} onPress={() => { }} />
 
-              <Divider/>
+                    <NewFoodList />
 
-              <Heading heading={'Fastest Near You'} onPress={()=>{}}/>
 
-              <FastestNearYou/>
-            </View>
-          
+
+                    <Divider />
+
+                    <Heading heading={'Fastest Near You'} onPress={() => { }} />
+
+                    <FastestNearYou />
+                  </View>
+                )
+            }
+
+
+
           </ScrollView>
         </View>
       </View>
@@ -66,5 +85,5 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  
+
 });

@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import ReusableHeader from "../components/ReusableHeader";
+import ReusableHeader from '../components/ReusableHeader'
 import { RatingInput, Rating } from "react-native-stock-star-rating";
 import { COLORS, SIZES } from "../constants/theme";
-import { AssetImage } from "../components";
+import  AssetImage  from "../components/AssetImage";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const AddRating = () => {
   const [rating, setRating] = useState(0);

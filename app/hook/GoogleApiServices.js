@@ -1,10 +1,11 @@
 import axios from "axios"
 
-
+const apiKey = "AIzaSyAV_n9DpoT4JJlWfx2P_4wPFQWd6TS-vfs"; // Replace with your API Key
+    
 const calculateDistanceAndTime = async (startLat, startLng, destinationLat, destinationLng, mode = 'bicycling') => {
-    const apiKey = ""; // Replace with your API Key
     const baseUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?";
     const ratePerKm = 1; 
+    const delayBetweenRequests = 1000;
 
     const requestUrl = `${baseUrl}origins=${startLat},${startLng}&destinations=${destinationLat},${destinationLng}&mode=${mode}&key=${apiKey}`;
 
@@ -46,65 +47,8 @@ const extractNumbers = (inputStr) =>{
 }
 
 
-const fetchDirections = async (
-    startLat,
-    startLng,
-    destinationLat,
-    destinationLng
-  ) => {
-    try {
-      const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${startLat},${startLng}&destination=${destinationLat},${destinationLng}&key=${apiKey}`;
-      const response = await fetch(url);
-      const data = await response.json().then((data) => {
-        setDirections(data);
-        const encodedPolyline = data.routes[0].overview_polyline.points;
-        const coordinates = decode(encodedPolyline);
-
-        setCoordinates(coordinates);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const decode = (encoded) => {
-    const points = [];
-    let index = 0,
-      len = encoded.length;
-    let lat = 0,
-      lng = 0;
-
-    while (index < len) {
-      let shift = 0,
-        result = 0;
-      let byte;
-      do {
-        byte = encoded.charCodeAt(index++) - 63; // <-- we use charCodeAt method, not a 'char' property
-        result |= (byte & 0x1f) << shift;
-        shift += 5;
-      } while (byte >= 0x20);
-      const deltaLat = result & 1 ? ~(result >> 1) : result >> 1;
-      lat += deltaLat;
-
-      shift = 0;
-      result = 0;
-      do {
-        byte = encoded.charCodeAt(index++) - 63;
-        result |= (byte & 0x1f) << shift;
-        shift += 5;
-      } while (byte >= 0x20);
-      const deltaLng = result & 1 ? ~(result >> 1) : result >> 1;
-      lng += deltaLng;
-
-      points.push({ latitude: lat / 1e5, longitude: lng / 1e5 });
-    }
-
-    return points;
-  };
-
-
-
 export default {
     calculateDistanceAndTime,
-    extractNumbers
+    extractNumbers,
+    apiKey
 }
